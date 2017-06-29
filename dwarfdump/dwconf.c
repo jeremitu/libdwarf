@@ -36,6 +36,9 @@
 #include "dwconf.h"
 #include "makename.h"
 
+#define WIN32_LEAN_AND_MEAN
+#include "windows.h" // JJ
+
 extern int verbose;
 
 /* The nesting level is arbitrary,  2 should suffice.

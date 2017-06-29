@@ -439,7 +439,7 @@ open_a_file(const char * name)
     /* Set to a file number that cannot be legal. */
     int f = -1;
 
-#if defined(__CYGWIN__) || defined(_WIN32)
+#if 0 //defined(__CYGWIN__) || defined(_WIN32)
     /*  It is not possible to share file handles
         between applications or DLLs. Each application has its own
         file-handle table. For two applications to use the same file
@@ -449,7 +449,7 @@ open_a_file(const char * name)
     /* For WIN32 open the file as binary */
     f = elf_open(name, O_RDONLY | O_BINARY);
 #else
-    f = open(name, O_RDONLY);
+    f = open(name, O_RDONLY | O_BINARY);
 #endif
     return f;
 
@@ -791,7 +791,7 @@ print_object_header(UNUSEDARG Elf *elf,
 
     /* Check if header information is required */
     if (local_section_map & DW_HDR_HEADER || local_section_map == DW_HDR_ALL) {
-#ifdef _WIN32
+#if 0 //def _WIN32
     /*  Standard libelf has no function generating the names of the
         encodings, but this libelf apparently does. */
     Elf_Ehdr_Literal eh_literals;

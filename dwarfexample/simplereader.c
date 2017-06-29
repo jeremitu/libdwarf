@@ -1119,7 +1119,7 @@ open_a_file(const char * name)
     /* Set to a file number that cannot be legal. */
     int f = -1;
 
-#if defined(__CYGWIN__) || defined(_WIN32)
+#if 0 //defined(__CYGWIN__) || defined(_WIN32)
     /*  It is not possible to share file handles
         between applications or DLLs. Each application has its own
         file-handle table. For two applications to use the same file
@@ -1129,7 +1129,7 @@ open_a_file(const char * name)
     /* For WIN32 open the file as binary */
     f = elf_open(name, O_RDONLY | O_BINARY);
 #else
-    f = open(name, O_RDONLY);
+    f = open(name, O_RDONLY | O_BINARY);
 #endif
     return f;
 }
